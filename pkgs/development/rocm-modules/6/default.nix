@@ -235,6 +235,12 @@ in rec {
     stdenv = llvm.rocmClangStdenv;
   };
 
+  hipblaslt = callPackage ./hipblaslt {
+    inherit rocmUpdateScript rocm-cmake rocblas rocsolver clr python3Packages hipblas;
+    clang-unwrapped = llvm.clang-unwrapped;
+    stdenv = llvm.rocmClangStdenv;
+  };
+
   # hipBlasLt - Very broken with Tensile at the moment, only supports GFX9
   # hipTensor - Only supports GFX9
 
